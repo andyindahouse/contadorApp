@@ -154,8 +154,19 @@ body .pane {
   }
 }
 
-.icon {
+a.item {
+    background-color: transparent;
+    color: white;
+    font-size: 22px;
+}
 
+.item.activated {
+  opacity: 0.6;
+}
+
+.badge.badge-assertive {
+    background-color: white;
+    color: #3F51B5; 
 }
 
 @media (max-width: 320px) {

@@ -6,6 +6,13 @@ angular.module('contadorApp')
 	function ($scope, $state){  
 
 		$scope.amount = window.localStorage.getItem('amount');
+
+		$scope.items = [{name:'Default',amount:435,selected:false},
+						{name:'Coches rojos',amount:0,selected:false},
+						{name:'Personas',amount:123,selected:false},
+						{name:'Estornudos',amount:69,selected:true}]
+
+		$scope.selected = {name: '', amount: 100}
 		
 		$scope.navigateTo = function (state) {
 			$state.go(state);
@@ -23,6 +30,20 @@ angular.module('contadorApp')
 			console.log("Reinicio contador...");
 			$scope.amount = 0;			
 			window.localStorage.setItem('amount', 0);
+		};
+
+		$scope.toChangeSelected = function (selected) {
+			var item = {};
+			for (var i = 0; i<$scope.items.length; i++) {
+				item = $scope.items[i];	
+				if(item.name === selected.name){
+					item.selected = true;
+				}else{
+					item.selected = false;	
+				}							
+			};
+
+			selected.selected=true;
 		};
 
 		var _toCreateCount = function (name) {

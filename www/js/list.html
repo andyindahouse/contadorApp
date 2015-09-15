@@ -1,8 +1,19 @@
  <ion-view view-title="Count list">
     <ion-content>
-    	<div>
-	      <h1>LISTA</h1>
-	    </div>
+
+		<div class="list">
+		  
+		  <a ng-repeat="item in items" 
+		  	 class="item item-icon-left" 
+		  	 href="#"
+		  	 ng-click="toChangeSelected({{item}})">
+		    <i ng-if=item.selected 
+		       class="icon ion-checkmark-circled"></i>
+		    {{item.name}}
+		   	<span class="badge badge-assertive">{{item.amount}}</span>
+		  </a>
+
+		</div>
 
     </ion-content>
  </ion-view>
