@@ -2,10 +2,11 @@
 	<ion-content>
 		<div >
 		  	<h1 class="main">{{amount}}</h1>
+		  	<p class="description">Supercontador</p>
 		</div>
 
-		<ul class="buttons">
-			<li class="restartButton">
+		<div class="buttons">
+			<!--<li class="restartButton">
 		  		<button class="button button-outline icon ion-refresh  button-calm" 
 		  				ng-click="toRestartCount()">
 		  	</li>
@@ -13,7 +14,14 @@
 		  		<button class="button button-outline icon ion-plus  button-positive" 
 		  				ng-click="toIncreaseCount()">
 
-		  	</li>
+		  	</li>-->
+		  	<button angular-ripple
+		  			ng-click="toRestartCount()" class="icon-arrows-ccw"></button>
+
+		  	<button angular-ripple
+		  			ng-click="toIncreaseCount()" class="icon-plus"></button>
+  			<button angular-ripple
+		  			ng-click="toIncreaseCount()" class="icon-list"></button>
 
 		  	<!--		  	
 		  	<li class="restartButton">
@@ -22,6 +30,6 @@
 		  		</button>
 		  	</li>
 		  	-->
-		</ul>
+		</div>
 	</ion-content>
 </ion-view>

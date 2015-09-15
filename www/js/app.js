@@ -5,7 +5,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('contadorApp', ['ionic'])
+angular.module('contadorApp', ['ionic', 'angularRipple'])
 
 .run(['$ionicPlatform','$ionicLoading',
   function ($ionicPlatform,$ionicLoading) {
