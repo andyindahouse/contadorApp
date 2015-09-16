@@ -63,7 +63,7 @@ body, div, h1,h2,h3,h4,h5,h6, p,.h1,.h2,.h3,.h4,.h5,.h6{
 }
 
 button {
-  font-family: 'Glyphicons Halflings' !important;
+  
 }
 
 input::-webkit-input-placeholder {
@@ -78,10 +78,10 @@ input:-ms-input-placeholder {
 
 
 body {
-   background-color: #3F51B5;
+   background: #3F51B5 !important;
 }
 body .pane {
-  background-color: transparent;
+  background: #3F51B5 !important;
 }
 
 .scroll {
@@ -113,7 +113,7 @@ body .pane {
   border-radius: 50%;
   border: 0;
   width: 2em;
-  padding-top: 0.2em;
+  padding-top: 0.1em;
   height: 2em;
   position: relative;
   overflow: hidden;
@@ -124,6 +124,7 @@ body .pane {
 }
 
 .buttons {
+  font-family: 'Glyphicons Halflings' !important;
   text-align: center;
   letter-spacing: 12px;
   position: fixed;
@@ -145,9 +146,44 @@ body .pane {
 
 .angular-ripple.animate {
   animation: ripple 0.35s linear;
+  -webkit-animation: ripple 0.35s linear;
 }
 
 @keyframes ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 80;
+    transform: scale(2.5);
+  }
+}
+@-webkit-keyframes ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 80;
+    transform: scale(2.5);
+  }
+}
+@-moz-keyframes ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 80;
+    transform: scale(2.5);
+  }
+}
+@-o-keyframes ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
   100% {
     opacity: 80;
     transform: scale(2.5);
@@ -157,7 +193,7 @@ body .pane {
 a.item {
     background-color: transparent;
     color: white;
-    font-size: 22px;
+    font-size: 19px;
 }
 
 .item.activated {
@@ -179,4 +215,8 @@ a.item {
   .main {
     font-size: 140px;
   }
+}
+
+.button.button-positive.button-clear {
+  color: #3F51B5;
 }

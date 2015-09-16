@@ -1,8 +1,8 @@
-<ion-view view-title="Home" hide-nav-bar="true" hide-back-button="true">
+<ion-view view-title="" hide-nav-bar="true" hide-back-button="true">
 	<ion-content>
 		<div >
 		  	<h1 class="main">{{amount}}</h1>
-		  	<p class="description">Supercontador</p>
+		  	<p class="description">{{selected.name}}</p>
 		</div>
 
 		<div class="buttons">
@@ -21,6 +21,7 @@
 		  	<button angular-ripple
 		  			ng-click="toIncreaseCount()" class="icon-plus"></button>
   			<button angular-ripple
+  					nav-transition="none"
 		  			ng-click="navigateTo('app.list')" class="icon-list"></button>
 
 		  	<!--		  	
