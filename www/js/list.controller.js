@@ -2,30 +2,18 @@
 
 angular.module('contadorApp')
 
-.controller('HomeCtrl', ['$scope','$state', '$window', '$ionicPopup', '$timeout',
-	function ($scope, $state, $window, $ionicPopup, $timeout){  
-
-		var self=this;			
+.controller('ListCtrl', ['$scope','$state', '$window', '$ionicPopup',
+	function ($scope, $state, $window, $ionicPopup){  
 
 		$scope.items = JSON.parse($window.localStorage.getItem('items'));
 		$scope.selected = $scope.items[$window.localStorage.getItem('selected')];
 		$scope.deleteOn = false;
-		$scope.label = 'Borrar';
-		
+		$scope.label = 'Borrar';	
+
 		$scope.navigateTo = function (state) {
 
 			$state.go(state);
-		};
-
-		$scope.toIncreaseCount = function () {
-			$scope.selected.amount = parseInt($scope.selected.amount) + 1;
-			$window.localStorage.setItem('items', JSON.stringify($scope.items));
-		};
-
-		$scope.toRestartCount = function () {
-			$scope.selected.amount = 0;						
-			$window.localStorage.setItem('items', JSON.stringify($scope.items));
-		};
+		};			
 
 		$scope.showConfirm = function() {
    			var confirmPopup = $ionicPopup.confirm({
@@ -44,10 +32,11 @@ angular.module('contadorApp')
 		$scope.toChangeSelected = function (selected) {
 
 			if(!$scope.deleteOn){
-
-				$scope.selected = $scope.items[selected.name];
-				$window.localStorage.setItem('selected', selected.name);				
-			}
+							
+				$window.localStorage.setItem('selected', selected.name);
+				$scope.selected = $scope.items[$window.localStorage.getItem('selected')];
+				$apply();
+			}			
 		};
 
 		var _deleteItem = function (item) {
@@ -92,9 +81,7 @@ angular.module('contadorApp')
 			  	$scope.items[$scope.item.name] = $scope.item;
 			  	$window.localStorage.setItem('items', JSON.stringify($scope.items));
 			  });
-		};
 
-		var _selectItem = function (item) {			
 		};
 
 		$scope.toChangeMod = function() {
@@ -123,11 +110,5 @@ angular.module('contadorApp')
 				var selected = '';
 			}*/
 		};
-
-		/*
-			$window.localStorage.setItem('sessionToken',token);
-            $window.localStorage.setItem('user',JSON.stringify(user));
-            $window.localStorage.removeItem('sessionToken');
-		*/
 
 }]);

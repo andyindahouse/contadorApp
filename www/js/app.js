@@ -7,8 +7,44 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('contadorApp', ['ionic', 'angularRipple'])
 
-.run(['$ionicPlatform','$ionicLoading',
-  function ($ionicPlatform,$ionicLoading) {
+.run(['$ionicPlatform','$ionicLoading', '$window',
+  function ($ionicPlatform,$ionicLoading, $window) {
+
+    /*
+        CASOS DE USO:
+
+        1) Primera vez que entra el usuario
+        2) Sucesivas veces que entra
+          2a) Existe seleccionado (no se realiza ninguna acción)
+          2b) No existe seleccionado
+    */
+
+    var selected = $window.localStorage.getItem('selected');
+    var items = JSON.parse($window.localStorage.getItem('items'));
+
+    var crearDef = function () {
+
+      var def = {
+        name: 'default',
+        amount: 0
+      };
+
+      items = {};
+
+      items[def.name] = def; 
+
+      $window.localStorage.setItem('items', JSON.stringify(items));
+      selected = def.name;
+      $window.localStorage.setItem('selected', def.name);
+    };
+
+    if(!items){
+      crearDef();
+    }
+
+    if(items && !items.hasOwnProperty(selected)){
+      crearDef();
+    }    
 
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -20,9 +56,6 @@ angular.module('contadorApp', ['ionic', 'angularRipple'])
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
-
-      if(!window.localStorage.getItem('amount'))
-        window.localStorage.setItem('amount', 0);
 
     });
 }])

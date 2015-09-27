@@ -16,7 +16,7 @@
 	  	 		class="item item-icon-left item-icon-right" 	  	 		
 	  	 		ng-if="!deleteOn"
 	  	 		ng-click="toChangeSelected({{item}})">
-	    		<i ng-if=item.selected 
+	    		<i ng-if="item == selected" 
 	       			class="icon ion-checkmark-round"></i>
 	    				{{item.name}}
 	   			<span class="badge badge-assertive">{{item.amount}}</span>
@@ -29,6 +29,12 @@
 	    		<i  class="icon ion-trash-a"></i>
 	    		{{item.name}}
 	  		</a>
+
+	  		<button class="button ion-folder  button-calm" 
+		  			ng-click="createItem()"
+		  			ng-if="!deleteOn">
+		  			Añadir
+		  	</button>
 
 
 		</div>
